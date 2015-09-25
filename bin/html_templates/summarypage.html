@@ -1,0 +1,78 @@
+{% extends "core.html" %} {% block content %}
+<style type="text/css">
+.textareas {
+	white-space: nowrap;
+}
+
+.tekst1 {
+	display: inline;
+	width: 50ex;
+}
+
+.tekst2 {
+	display: inline;
+	width: 50ex;
+}
+
+.tekst3 {
+	display: inline;
+	width: 50ex;
+}
+</style>
+<div class="row" data-bind="visible:isInitialized" style="display: none">
+	<div class="form-group">
+		<label>Insert your text - if you have more than three paragraphs split your text into three equal parts. Note: first two paragraphs are required!</label>
+		<div class="textareas">
+			<textarea id="text" class="tekst1" name="text" rows="20"
+				cols="25" placeholder="Enter first paragraph here..."
+				data-bind="value: text1"></textarea>
+			<textarea id="text" class="tekst2" name="text" rows="20"
+				cols="25" placeholder="Enter second paragraph here..."
+				data-bind="value: text2"></textarea>
+			<textarea id="text" class="tekst3" name="text" rows="20"
+				cols="25" placeholder="Enter third paragraph here..."
+				data-bind="value: text3"></textarea>
+		</div>
+	</div>
+	<div>
+		<p>
+			<button class="btn btn-success" data-bind="click: createSummary">Create
+				summary</button>
+			<input type="number" data-bind="value: numberOfThessis"></input>
+		<p class="text-danger" data-bind="validationMessage: numberOfThessis"></p>
+		<button class="btn btn-success"
+			data-bind="visible:saveTextSummaryVisible, click: saveTextSummary">Save
+			your text and summary</button>
+		</p>
+	</div>
+	<div class="form-group">
+		<label>Summary:</label>
+		<textarea id="text" class="form-control" name="text" rows="20"
+			cols="80" placeholder="Summary will be displayed here..."
+			data-bind="value: summary"></textarea>
+	</div>
+</div>
+<script type="text/html" id="confirmdialogtemplate">
+    <div id="confirmDialogContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" data-bind="visible: title">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-bind="visible: canClose">x</button>
+                    <h3 id="myModalLabel" data-bind="html: title"></h3>
+                </div>
+                <div class="modal-body">
+                    <p data-bind="html: question"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-success" data-dismiss="modal" aria-hidden="true" data-bind="click: yesCallback">Yes</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" data-bind="click: noCallback">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+{% endblock %} {% block page-scripts %} {% script "/js/notify/notify.js"
+%} {% script "/js/knockoutjs/knockout-3.3.0.js" %} {% script
+"/js/knockoutvalidations/knockout.validation.js" %} {% script
+"/js/viewmodels/summaryViewModel.js" %} {% endblock %}

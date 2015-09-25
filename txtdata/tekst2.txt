@@ -1,0 +1,5 @@
+A programming language is a means for building abstractions. Instead of doing tedious
+manual work, a programmer can write code once and treat that code as a reusable unit.
+Code can be executed repeatedly in a loop; or, code can be grouped as a unit and given
+a name as a function; or, using conditionals, the same code can do different things in
+different circumstances.

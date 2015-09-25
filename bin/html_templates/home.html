@@ -1,0 +1,22 @@
+{% extends "core.html" %} {% block content %}
+<div class="jumbotron">
+	<h1>Welcome to "Summary generator and spelling checker"</h1>
+	<p>Generate summary from your text and check spelling quickly and
+		easily!</p>
+	<p>
+		<a class="btn btn-primary btn-success"
+			href="{{servlet-context}}/summary">Generate your summary now
+			&raquo;</a>
+	</p>
+	<br>
+	<p>
+		<a class="btn btn-primary btn-success"
+			href="{{servlet-context}}/spelling">Check your spelling now
+			&raquo;</a>
+	</p>
+</div>
+
+<div class="row">
+	<div class="span12">{{docs|markdown}}</div>
+</div>
+{% endblock %}

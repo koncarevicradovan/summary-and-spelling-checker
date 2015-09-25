@@ -1,0 +1,134 @@
+{% extends "coreadmin.html" %} {% block content %}
+<style type="text/css">
+tbody tr:hover {
+	cursor: pointer;
+	font-weight: bold;
+	background-color: #84c165 !important;
+}
+</style>
+<div class="row">
+	<div class="col-md-6" data-bind="if: isCreating">
+		<form role="form" data-bind="submit: userViewModel().createUser">
+			<div class="form-group">
+				<label for="usr">Username:</label> <input id="usr" type="input"
+					class="form-control" name="usr" placeholder="Username"
+					data-bind="value: userViewModel().username" />
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().username"></p>
+			</div>
+			<div class="form-group">
+				<label for="first-name">First name:</label> <input id="first-name"
+					type="input" class="form-control" name="first-name"
+					placeholder="First name"
+					data-bind="value: userViewModel().firstName">
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().firstName"></p>
+			</div>
+			<div class="form-group">
+				<label for="last-name">Last name:</label> <input id="last-name"
+					type="input" class="form-control" name="last-name"
+					placeholder="Last name" data-bind="value: userViewModel().lastName">
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().lastName"></p>
+			</div>
+			<div class="form-group">
+				<label for="email">Email address:</label> <input id="email"
+					type="email" class="form-control" name="email" placeholder="E-mail"
+					data-bind="value: userViewModel().email">
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().email"></p>
+			</div>
+			<div class="form-group">
+				<label for="pwd">Password:</label> <input id="pwd" type="password"
+					class="form-control" name="pwd" placeholder="Password"
+					data-bind="value: userViewModel().password">
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().password"></p>
+			</div>
+			<div class="form-group">
+				<label for="pwd1">Retype password:</label> <input id="pwd1"
+					type="password" class="form-control" name="pwd1"
+					placeholder="Retype password"
+					data-bind="value: userViewModel().confirmPassword">
+				<p class="text-danger"
+					data-bind="validationMessage: userViewModel().confirmPassword"></p>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<label> <input type="checkbox" name="is-admin"
+						data-bind="checked: userViewModel().isAdmin"> Is
+						administrator
+					</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">Create new
+				user</button>
+			<button type="button" class="btn btn-default"
+				data-bind="click: showUsers">Go back to users</button>
+		</form>
+	</div>
+	<div class="col-md-6" data-bind="visible: !isCreating()">
+		<div class="form-group">
+			<button type="button" class="btn btn-success btn-sm"
+				data-bind="click: createNewUSer">Create new user</button>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<th>Username</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>E-mail</th>
+				</thead>
+				<tbody data-bind="foreach: users">
+					<tr data-bind="click: openUserDetails">
+						<td data-bind="text: username"></td>
+						<td data-bind="text: firstName"></td>
+						<td data-bind="text: lastName"></td>
+						<td data-bind="text: email"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/html" id="UserDialogTemplate">
+     <div id="confirmDialogContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-bind="visible: canClose">x</button>
+                    <h3 id="myModalLabel">User</h3>
+                <div class="modal-body">
+           			<div class="form-group">
+						<label for="usr">Username:</label>
+						<input id="usr" type="input" class="form-control" name="usr" placeholder="Username" data-bind="value: username" readonly>
+					</div>
+					<div class="form-group">
+						<label for="first-name">First name:</label>
+						<input id="first-name" type="input" class="form-control" name="first-name" placeholder="First name" data-bind="value: firstName">
+					</div>
+					<div class="form-group">
+						<label for="last-name">Last name:</label>
+						<input id="last-name" type="input" class="form-control" name="last-name" placeholder="Last name" data-bind="value: lastName">
+					</div>
+					<div class="form-group">
+						<label for="email">Email address:</label>
+						<input id="email" type="email" class="form-control" name="email" placeholder="E-mail" data-bind="value: email">
+					</div>
+                </div>
+                <div class="modal-footer">
+                  	<div class="form-group">
+					  	<button type="button" class="btn btn-success btn-sm" data-bind="click: editUser">Edit User</button>
+					 	 <button type="button" class="btn btn-danger btn-sm" data-bind="click: removeUser">Delete User</button>
+					</div>  
+                </div>
+            </div>
+        </div>
+    </div>   	
+</script>
+
+{% endblock %} {% block page-scripts %} {% script "/js/notify/notify.js"
+%} {% script "/js/knockoutjs/knockout-3.3.0.js" %} {% script
+"/js/knockoutvalidations/knockout.validation.js" %} {% script
+"/js/viewmodels/administrationViewModel.js" %} {% endblock %}

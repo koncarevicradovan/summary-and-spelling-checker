@@ -1,0 +1,81 @@
+{% extends "core.html" %} {% block content %}
+
+<div id="content">
+	<h1>Do you want to correct word or text?</h1>
+	<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+		<li class="active"><a href="#word" data-toggle="tab">Word</a></li>
+		<li><a href="#text" data-toggle="tab">Text</a></li>
+	</ul>
+	<div id="my-tab-content" class="tab-content">
+		<div class="tab-pane active" id="word">
+			<div class="form-group">
+				<label>Insert your word:</label> <input type="text"
+					class="form-control" data-bind="value: word">
+			</div>
+			<p>
+				<button class="btn btn-success" data-bind="click: correctWord">Correct
+					word</button>
+				<button class="btn btn-success"
+					data-bind="click: trainWithWord, visible: enableTrainWord()">Train
+					with corrected word</button>
+			</p>
+			<div class="form-group">
+				<label>Corrected word:</label> <input type="text"
+					class="form-control" data-bind="value: correctedWord">
+			</div>
+			<div class="form-group" data-bind="visible: enableTrainNewWord">
+				<div class="form-group">
+					<label>If you are not satisfied with corrected word you can
+						write appropriate word and train your dataset:</label> <input type="text"
+						class="form-control" data-bind="value: newword">
+				</div>
+				<button class="btn btn-success"
+					data-bind="click: trainWithNewWord, visible: enableTrainNewWord()">Train
+					with new word</button>
+			</div>
+		</div>
+		<div class="tab-pane" id="text">
+			<div class="form-group">
+				<label>Insert your text:</label>
+				<textarea id="text" class="form-control" name="text" rows="20"
+					cols="80" placeholder="Enter some text here..."
+					data-bind="value: text"></textarea>
+			</div>
+			<button class="btn btn-success" data-bind="click: correctText">Correct
+				text</button>
+			<button class="btn btn-success"
+				data-bind="click: trainWithText, visible: enableTrainText()">Train
+				with corrected text</button>
+			<div class="form-group">
+				<label>Summary:</label>
+				<textarea id="text" class="form-control" name="text" rows="20"
+					cols="80" placeholder="Corrected text will be displayed here..."
+					data-bind="value: correctedText"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/html" id="confirmdialogtemplate">
+    <div id="confirmDialogContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" data-bind="visible: title">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-bind="visible: canClose">x</button>
+                    <h3 id="myModalLabel" data-bind="html: title"></h3>
+                </div>
+                <div class="modal-body">
+                    <p data-bind="html: question"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-success" data-dismiss="modal" aria-hidden="true" data-bind="click: yesCallback">Yes</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" data-bind="click: noCallback">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+{% endblock %} {% block page-scripts %} {% script "/js/notify/notify.js"
+%} {% script "/js/knockoutjs/knockout-3.3.0.js" %} {% script
+"/js/viewmodels/spellingViewModel.js" %} {% endblock %}

@@ -1,0 +1,73 @@
+{% extends "core.html" %} {% block content %}
+
+<div class="row">
+	<h1>Here you can change your profile</h1>
+	<div class="col-md-6">
+		<form role="form" data-bind="submit: editUser">
+			<div class="form-group">
+				<label for="usr">Username:</label> <input id="usr" type="text"
+					class="form-control" name="usr" placeholder="Username"
+					data-bind="value: username" readonly />
+			</div>
+			<div class="form-group">
+				<label for="first-name">First name:</label> <input id="first-name"
+					type="text" class="form-control" name="first-name"
+					placeholder="First name" data-bind="value: firstName">
+				<p class="text-danger" data-bind="validationMessage: firstName"></p>
+			</div>
+			<div class="form-group">
+				<label for="last-name">Last name:</label> <input id="last-name"
+					type="text" class="form-control" name="last-name"
+					placeholder="Last name" data-bind="value: lastName">
+				<p class="text-danger" data-bind="validationMessage: lastName"></p>
+			</div>
+			<div class="form-group">
+				<label for="email">Email address:</label> <input id="email"
+					type="email" class="form-control" name="email"
+					placeholder="E-mail adress" data-bind="value: email">
+				<p class="text-danger" data-bind="validationMessage: email"></p>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" value="true"
+					data-bind="checked: wantNewPassword" /> Want new password?
+			</div>
+			<div data-bind="visible: wantNewPassword()">
+				<div class="form-group">
+					<label for="newpwd">New password:</label> <input id="newpwd"
+						type="password" class="form-control" name="newpwd"
+						placeholder="New password" data-bind="value: newpwd">
+					<p class="text-danger" data-bind="validationMessage: newpwd"></p>
+				</div>
+				<div class="form-group">
+					<label for="email">Retype new password:</label> <input
+						id="newPwdRetype" type="password" class="form-control"
+						name="newPwdRetype" placeholder="Retype new password"
+						data-bind="value: newPwdRetype">
+					<p class="text-danger" data-bind="validationMessage: newpwd"></p>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">Save</button>
+			<button class="btn btn-success" data-bind="click: showMySummaries">Show
+				my recently texts and its summaries</button>
+		</form>
+	</div>
+	<div data-bind="visible: summaries().length > 0">
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<th>Text</th>
+					<th>Summary</th>
+				</thead>
+				<tbody data-bind="foreach: summaries">
+					<td data-bind="text: text"></td>
+					<td data-bind="text: summary"></td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %} {% block page-scripts %} {% script "/js/notify/notify.js"
+%} {% script "/js/knockoutjs/knockout-3.3.0.js" %} {% script
+"/js/knockoutvalidations/knockout.validation.js" %} {% script
+"/js/viewmodels/userViewModel.js" %} {% endblock %}

@@ -1,0 +1,5 @@
+It should be clear that some languages offer more powerful means of abstraction than
+others. Imagine for a moment a programming language without loops. Such a language
+might be usable, but unrolling all loops by hand would be incredibly tedious. Similarly,
+a language without functions might be able to do anything any other Turing-complete
+language can do, but code would have to be repeated over and over.

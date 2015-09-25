@@ -1,0 +1,4 @@
+Historically, Lisps have been described as “programmable programming languages.”
+This description fits Clojure, and a large part of the reason for that is macros. Macros
+allow a programmer to extend the Clojure language in ways that are difficult or impossible
+in most other languages.
