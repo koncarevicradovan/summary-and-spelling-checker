@@ -1,2 +1,2 @@
-# summary-and-spelling-checker
-Some explanation.
+# Clojure web application summary generator and spelling checker
+
