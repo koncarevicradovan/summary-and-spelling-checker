@@ -23,7 +23,7 @@ with appropriate data about that user, then he can change or delete that user. T
 
 When regular user is logged in first page is home page and from there he can go to summary generator, spelling corrector or
 profile page. 
-Summary generator page has three text areas where user should enter at least two paragraphs of text that he want to summarize and if user has more than three paragraphs he can split his text into three equal parts and enter those parts in text areas. After that user choose number of thesis that he want to have in his summary and the he clicks on Create summary. In bottom text area summary will appear with chosen number of thesis. Here is adjusted and implemented algorithm from book "Clojure Data Structures and Algorithms Cookbook" - Chapter 4. This algorithm is inspired by Google's PageRank and is labeled as "LexRank". Algorithm used  term frequency inverse document frequency (TF-IDF) to represent text as vectors. TFIDF is computed using the following formula:
+Summary generator page has three text areas where user should enter at least two paragraphs of text that he want to summarize and if user has more than three paragraphs he can split his text into three equal parts and enter those parts in text areas. After that user choose number of thesis that he want to have in his summary and the he clicks on Create summary. In bottom text area summary will appear with chosen number of thesis. Here is adjusted and implemented algorithm from book ["Clojure Data Structures and Algorithms Cookbook"](https://www.packtpub.com/application-development/clojure-data-structures-and-algorithms-cookbook) - Chapter 4. This algorithm is inspired by Google's PageRank and is labeled as "LexRank". Algorithm used  term frequency inverse document frequency (TF-IDF) to represent text as vectors. TFIDF is computed using the following formula:
       TFIDF = TF * IDF,
 where term frequency (TF) is the measure of how many times in a sentence particular word occurs, and inverse document frequency (IDF) is a measure of how often a particular word is present across all the documents/paragraphs(textual chunks). After that distance between two sentences represented by TFIDF is computed using measure called cosine similarity. Matrix with all the chunks's sentences in both columns and rows is filled with not zero data if cosine similarity is higher than 0.2, that is optimal value for cosine threshold. All this is used for measuring degree centrality of each sentence, but the most important thing is to watch centrality degree. With respect to that using power method we will get measure of how
 sentence is salient and algorithm return top N the most salient sentences. After creating summary user can save entered text and created summary (he can view that on his profile page).
@@ -39,3 +39,15 @@ Spelling corrector page has two tabs word and text. On tab words user can enter 
 On the profile page a users can see and change data about their profile and saved texts and generated summaries.
 
 Most of the front end scripting was done using javascript library Knockout JS (with creating ViewModels), including KnockoutValidation (for client validation in addition to server validation) and Notify.js, as well as jQuerry combined with Selmer. Responsive UI style is done using Bootstrap.
+
+[Absolute linkic](http://www.google.rs)
+
+#Technology explanation
+
+
+#Literature
+
+
+#License
+
+Distributed under the Eclipse Public License, the same as Clojure.
