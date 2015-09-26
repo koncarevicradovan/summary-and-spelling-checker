@@ -40,13 +40,34 @@ On the profile page a users can see and change data about their profile and save
 
 Most of the front end scripting was done using javascript library Knockout JS (with creating ViewModels), including KnockoutValidation (for client validation in addition to server validation) and Notify.js, as well as jQuerry combined with Selmer. Responsive UI style is done using Bootstrap.
 
-[Absolute linkic](http://www.google.rs)
-
 #Technology explanation
 
+[Compojure](https://github.com/weavejester/compojure) and [Ring](https://github.com/ring-clojure/ring)
+
+Compojure and Ring extends the native Clojure API for working with servlets (Java servlet). Java servlet are wrapped using Ring as a wrapper which allows modular structure of web applications where of modular components can be shared among a variety of applications, web servers, and web frameworks. Compojure also uses Ring for mapping request-handler functions to specific URLs. This specific infrastructure allows web application to be composed of small independent parts.
+
+Monger
+
+Monger is a Clojure MongoDB client. When we use Monger, Clojure data structures are automaticaly translated into MongoDB/BSON data types. It makes persistent manager more readable and easier to implement. I favors consistency and partition tolerance as its primary goals
+
+Selmer
+
+Selmer is primarily meant for HTML generation, but it can be used for templating any text.That is because Selmer templates consist of plain text that contains embedded expression and filter tags. Selmer compiles the template files and replaces any tags with the corresponding functions for handling dynamic content. The compiled template can then be rendered given a context map. When applied to HTML templates it makes a clean separation between the presentation and BL. On top of that,
+the templates can be maintained by somebody without any knowledge of Clojure which enables the distribution of tasks.
+
+[Lib Noir](https://github.com/noir-clojure/lib-noir)
+
+Lib Noir presents set of utillities and helpers for handling common operations that can be found in web application. One of the most important things about lib-noir is that lib-noir provides a way to manage sessions via its noir.session namespace.
 
 #Literature
 
+[Practical Clojure](http://www.amazon.com/Practical-Clojure-Experts-Voice-Source/dp/1430272317) - Good starting point for exploring Clojure and functional programming. It has some great chunks of code and solid explanation for seting up Clojure environment.
+
+[Clojure Programming](http://www.amazon.com/Clojure-Programming-Chas-Emerick/dp/1449394701/ref=pd_sim_b_1?ie=UTF8&refRID=0KCSHHVCSA3Z3YCX6JAF) - is definitely one of the most comprehensive book about functional programming and Clojure. It has great explanations about core of the language and how things work "under the hood". In some parts examples are too complex and hard to understand, and because of that you feel that you are falling "Down the Rabbit Hole", as first chapter says. It is not great recommendation as starting point, but it is for middle level. 
+
+[Clojure Data Analysis Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/clojure-data-analysis-cookbook) and [Clojure Data Structures and Algorithms Cookbook](https://www.packtpub.com/application-development/clojure-data-structures-and-algorithms-cookbook) - both books have a similar approach to matter. Neither of them is book to be read from cover to cover. They have great algorithms with detailed explanation. Also, they cover wide diapason of areas relying on science, logic, math, statistics, etc.
+
+[Web Development with Clojure](https://pragprog.com/book/dswdcloj/web-development-with-clojure) - In my opinion absolutely brilliant book with excellent explanations related to web development. Also, has short overview about the way Clojure programs are structured and some of the unique aspects of the language. Acquire sufficient knowledge to make decent web application and to covers topics from bottom (connection with database and making persistent managers) to the top (UI/UX, rendering, etc). It focuses on applying Clojure to solve concrete problems via web application which makes it a good starting point for web development using Clojure.
 
 #License
 
